@@ -62,4 +62,6 @@ export const RootNavigator = (signedIn = false) => {
   );
 };
 
-export const createRootNavigator = createAppContainer(RootNavigator);
+export function createRootNavigator (signedIn) {
+  return createAppContainer(RootNavigator(signedIn));
+}
