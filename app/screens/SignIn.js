@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { Card, Button, FormLabel, FormInput } from "react-native-elements";
 import { onSignIn } from "../auth";
 
-export default (navigation) => (
+export default ({navigation}) => (
   <View style={{ paddingVertical: 20 }}>
     <Card title="SIGN IN">
       <FormLabel>Email</FormLabel>
