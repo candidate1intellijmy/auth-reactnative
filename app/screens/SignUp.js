@@ -24,7 +24,7 @@ export default ({ navigation }) => (
         backgroundColor="transparent"
         textStyle={{ color: "#bcbec1" }}
         title="Sign In"
-        onPress={() => alert("go to sign in screen")}
+        onPress={() => navigation.navigate("SignIn")}
       />
     </Card>
   </View>
