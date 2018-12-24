@@ -5,8 +5,8 @@ import { onSignOut } from "../auth";
 
 export default () => (
   <View style={{ paddingVertical: 20 }}>
-    <Text>
-      Hell-o!!!
-    </Text>
+    <Card title="Welcome">
+        <Text style={{ fontSize: 28 }}>Hell-O!!!</Text>
+    </Card>
   </View>
 );
