@@ -10,8 +10,18 @@ export default class App extends React.Component {
 
     this.state = {
       signedIn: false,
-      checkedSignIn: false
+      checkedSignIn: false,
+      region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }
     };
+  }
+
+  onRegionChange = (region) => {
+     this.setState({ region });
   }
 
   componentDidMount() {
