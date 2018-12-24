@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { Tab } from './config/navigation';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
-export default class App extends Component {
+import { SignedOut } from "./router";
+
+export default class App extends React.Component {
   render() {
-      return( <Tab /> );
+    return <SignedOut />;
   }
 }
