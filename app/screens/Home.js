@@ -13,7 +13,7 @@ export default ({region, onRegionChange}) => (
 	    right: 0,
 	    bottom: 0,
     }} 
-    region={region} 
-    onRegionChange={onRegionChange}
+    region={this.region} 
+    onRegionChange={this.onRegionChange}
   />
 );

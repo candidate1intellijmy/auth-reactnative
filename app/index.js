@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { createRootNavigator } from "./router";
 
 import { isSignedIn } from "./auth";
@@ -16,12 +16,25 @@ export default class App extends React.Component {
         longitude: -122.4324,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
-      }
+      },
+      username: "", 
+      password: ""
     };
+
+    this._handlePress = this._handlePress.bind(this)
   }
 
   onRegionChange = (region) => {
+     alert(region);
      this.setState({ region });
+  }
+
+  _handlePress = () => {
+     const { username } = this.state;
+     const { password } = this.state;
+
+     Alert.alert(username);
+     Alert.alert(password);
   }
 
   componentDidMount() {
@@ -39,6 +52,6 @@ export default class App extends React.Component {
     }
 
     const Layout = createRootNavigator(signedIn);
-    return <Layout />;
+    return <Layout/>;
   }
 }
