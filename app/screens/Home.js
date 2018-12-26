@@ -1,10 +1,10 @@
 import React from "react";
 import { View } from "react-native";
 import { Card, Button, Text } from "react-native-elements";
-import { onSignOut } from "../auth";
+import { onSignOut, onRegionChange, _values } from "../auth";
 import MapView from 'react-native-maps';
 
-export default ({region, onRegionChange}) => (
+export default () => (
     <MapView 
     style={{
     	position: 'absolute',
@@ -13,7 +13,8 @@ export default ({region, onRegionChange}) => (
 	    right: 0,
 	    bottom: 0,
     }} 
-    region={this.region} 
-    onRegionChange={this.onRegionChange}
+
+    region={_values.region}
+    onRegionChange={() => onRegionChange() }
   />
 );

@@ -19,3 +19,22 @@ export const isSignedIn = () => {
       .catch(err => reject(err));
   });
 };
+
+export const _values = { 
+  username: '',
+  password: '',
+  region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }
+};
+
+export const onRegionChange = (region) => {
+     _values.region = region;
+}
+
+export const _handlePress = () => {
+  alert("username: " + _values.username + " password: " + _values.password);
+};

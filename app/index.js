@@ -10,31 +10,8 @@ export default class App extends React.Component {
 
     this.state = {
       signedIn: false,
-      checkedSignIn: false,
-      region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      },
-      username: "", 
-      password: ""
+      checkedSignIn: false
     };
-
-    this._handlePress = this._handlePress.bind(this)
-  }
-
-  onRegionChange = (region) => {
-     alert(region);
-     this.setState({ region });
-  }
-
-  _handlePress = () => {
-     const { username } = this.state;
-     const { password } = this.state;
-
-     Alert.alert(username);
-     Alert.alert(password);
   }
 
   componentDidMount() {
