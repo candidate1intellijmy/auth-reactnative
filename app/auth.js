@@ -2,7 +2,37 @@ import { AsyncStorage } from "react-native";
 
 export const USER_KEY = "auth-demo-key";
 
-export const onSignIn = () => AsyncStorage.setItem(USER_KEY, "true");
+export const onSignIn = async () => {
+  if (_values.username && _values.password) { 
+    fetch("http://localhost:3001/sessions/create", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: _values.username,
+        password: _values.password
+      })
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      if(responseData.access_token){
+         AsyncStorage.setItem(USER_KEY, responseData.access_token);
+        _values.success = 1;
+        alert("Login successfully!");
+        return _values.success;
+      } else {
+        alert("Wrong username and password!");
+        _values.success = 0;
+        return _values.success;
+      }
+    })
+    .done();
+  } else{
+    alert("Please enter your username and password.");
+  }
+}
 
 export const onSignUp = () => {
   if (_values.username && _values.password) { 
@@ -19,7 +49,6 @@ export const onSignUp = () => {
     })
     .then((response) => response.json())
     .then((responseData) => {
-      //AsyncStorage.setItem(USER_KEY, responseData.access_token),
       alert("You may login!")
     })
     .done();
@@ -47,6 +76,7 @@ export const isSignedIn = () => {
 export const _values = { 
   username: '',
   password: '',
+  success: '',
   region: {
         latitude: 37.78825,
         longitude: -122.4324,
@@ -59,6 +89,4 @@ export const onRegionChange = (region) => {
      _values.region = region;
 }
 
-export const _handlePress = () => {
-  alert("username: " + _values.username + " password: " + _values.password);
-};
+//.then(() => navigation.navigate("SignedIn"))

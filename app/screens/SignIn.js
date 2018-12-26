@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { Card, Button, FormLabel, FormInput } from "react-native-elements";
-import { onSignIn, _handlePress, _values } from "../auth";
+import { onSignIn, _values } from "../auth";
 
 export default ({navigation}) => (
   <View style={{ paddingVertical: 20 }}>
@@ -23,7 +23,13 @@ export default ({navigation}) => (
         backgroundColor="#03A9F4"
         title="SIGN IN"
         onPress={() => {
-          onSignIn().then(() => navigation.navigate("SignedIn"));
+          onSignIn().then( () => {
+            alert(_values.success);
+            if(_values.success == 1){
+               navigation.navigate("SignedIn");
+            } 
+          })
+          .catch(error => console.log(error)) //do something in case onSignIn fails 
         }}
       />
     </Card>
