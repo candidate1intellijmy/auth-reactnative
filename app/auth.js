@@ -4,6 +4,30 @@ export const USER_KEY = "auth-demo-key";
 
 export const onSignIn = () => AsyncStorage.setItem(USER_KEY, "true");
 
+export const onSignUp = () => {
+  if (_values.username && _values.password) { 
+    fetch("http://localhost:3001/users", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: _values.username,
+        password: _values.password
+      })
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      //AsyncStorage.setItem(USER_KEY, responseData.access_token),
+      alert("You may login!")
+    })
+    .done();
+  } else{
+    alert("Please enter your username and password.");
+  }
+}
+
 export const onSignOut = () => AsyncStorage.removeItem(USER_KEY);
 
 export const isSignedIn = () => {
