@@ -4,7 +4,7 @@ export const USER_KEY = "auth-demo-key";
 
 export const onSignIn = async () => {
   if (_values.username && _values.password) { 
-    fetch("http://localhost:3001/sessions/create", {
+    return fetch("http://localhost:3001/sessions/create", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -22,8 +22,7 @@ export const onSignIn = async () => {
         _values.success = 1;
         alert("Login successfully!");
         return Promise.resolve(_values.success);
-      } else if(!responseData.access_token){
-        alert("Wrong username and password!");
+      } else{
         _values.success = 0;
         return Promise.resolve(_values.success);
       }
@@ -89,5 +88,3 @@ export const _values = {
 export const onRegionChange = (region) => {
      _values.region = region;
 }
-
-//.then(() => navigation.navigate("SignedIn"))

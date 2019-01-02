@@ -24,12 +24,11 @@ export default ({navigation}) => (
         title="SIGN IN"
         onPress={() => {
           onSignIn().then( (value) => {
-            alert(value);
             if(value == 1){
                navigation.navigate("SignedIn");
             } 
           })
-          .catch(error => console.log(error)) //do something in case onSignIn fails 
+          .catch(error => console.log(error)) 
         }}
       />
     </Card>
