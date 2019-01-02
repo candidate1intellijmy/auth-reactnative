@@ -21,14 +21,13 @@ export const onSignIn = async () => {
          AsyncStorage.setItem(USER_KEY, responseData.access_token);
         _values.success = 1;
         alert("Login successfully!");
-        return _values.success;
-      } else {
+        return Promise.resolve(_values.success);
+      } else if(!responseData.access_token){
         alert("Wrong username and password!");
         _values.success = 0;
-        return _values.success;
+        return Promise.resolve(_values.success);
       }
-    })
-    .done();
+    });
   } else{
     alert("Please enter your username and password.");
   }
@@ -49,7 +48,9 @@ export const onSignUp = () => {
     })
     .then((response) => response.json())
     .then((responseData) => {
-      alert("You may login!")
+      _values.username = "";
+      _values.password = "";
+      alert("You may login!");
     })
     .done();
   } else{

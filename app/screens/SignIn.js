@@ -23,9 +23,9 @@ export default ({navigation}) => (
         backgroundColor="#03A9F4"
         title="SIGN IN"
         onPress={() => {
-          onSignIn().then( () => {
-            alert(_values.success);
-            if(_values.success == 1){
+          onSignIn().then( (value) => {
+            alert(value);
+            if(value == 1){
                navigation.navigate("SignedIn");
             } 
           })
